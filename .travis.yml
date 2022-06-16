@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+language: generic
+
+before_install:
+  - docker build -t andyogzewalla/docker-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true andyogzewalla/docker-test npm run test
